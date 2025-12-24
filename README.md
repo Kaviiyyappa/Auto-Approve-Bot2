@@ -48,7 +48,7 @@ broadcast - Broadcast Massage Send All Users In Bot.
 - `AUTH_CHANNELS` : Your Public & Private FSUB channels ID.
 - `AUTH_REQ_CHANNELS` : Your Private Request FSUB channels ID.
 - `LOG_CHANNEL` - Your log channel id.
-- `ADMIN` - bot owners Id/ ids ( for broadcast and stats cmds). for multiple use space.
+- `ADMIN` - bot owners Id.
 </details>
 
 ### 💞 CREDIT
