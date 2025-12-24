@@ -38,14 +38,17 @@ broadcast - Broadcast Massage Send All Users In Bot.
 
 <details><summary>Tap On Me For Environment Variable</summary>
 
-  - `API_ID` - Your Telegram API ID.Get it [Here](https://youtu.be/y5FwAobQ-Kc)
-  - `API_HASH` - Your Telegram API HASH.Get it [Here](https://youtu.be/y5FwAobQ-Kc)
-  - `PICS` - Your bot start images (you can add multiple images)
-  - `DB_URI` - Mongodb [Database](https://youtu.be/j8LIuM7vv18)
-  - `BOT_TOKEN` - Get From [BotFather](https://youtu.be/aJILCCXfNVM)
-  - `AUTH_CHANNELS` - Your Force subscribe channel id.
-   - `LOG_CHANNEL` - Your log channel id
-  - `ADMINS` - bot owners Id/ ids ( for broadcast and stats cmds). for multiple use space.
+- `API_ID` - Your Telegram API ID.Get it [Here](https://youtu.be/y5FwAobQ-Kc)
+- `API_HASH` - Your Telegram API HASH.Get it [Here](https://youtu.be/y5FwAobQ-Kc)
+- `PICS` - Your bot start images (you can add multiple images)
+- `DB_URI` - Mongodb [Database](https://youtu.be/j8LIuM7vv18)
+- `BOT_TOKEN` - Get From [BotFather](https://youtu.be/aJILCCXfNVM)
+ - `IS_FSUB` : True/False FSUB accordingly.
+- `FSUB_EXPIRE` : Your FSUB link expire time.
+- `AUTH_CHANNELS` : Your Public & Private FSUB channels ID.
+- `AUTH_REQ_CHANNELS` : Your Private Request FSUB channels ID.
+- `LOG_CHANNEL` - Your log channel id.
+- `ADMINS` - bot owners Id/ ids ( for broadcast and stats cmds). for multiple use space.
 </details>
 
 ### 💞 CREDIT
