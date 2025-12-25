@@ -24,7 +24,7 @@ async def maintenance_blocker(_, m: Message):
     except:
         pass
     await m.reply_text(f"<b>{m.from_user.mention},\n\nᴛʜɪꜱ ʙᴏᴛ ɪꜱ ᴄᴜʀʀᴇɴᴛʟʏ ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ.\n\n<blockquote>ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ ꜰᴏʀ ᴍᴏʀᴇ ɪɴꜰᴏ.</blockquote></b>", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("👨‍💻 ᴏᴡɴᴇʀ 👨‍💻", user_id=int(ADMIN))]]))
-   raise StopPropagation
+    raise StopPropagation
 
 @Client.on_message(filters.command("maintenance") & filters.user(ADMIN))
 async def maintenance_cmd(_, m: Message):
