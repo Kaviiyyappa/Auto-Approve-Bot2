@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.handlers import StopPropagation
+from pyrogram.errors import StopPropagation
 from config import ADMIN, DB_URI, DB_NAME
 from motor.motor_asyncio import AsyncIOMotorClient
 
