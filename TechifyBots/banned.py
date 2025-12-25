@@ -72,7 +72,7 @@ async def ban_cmd(c: Client, m: Message):
         await m.reply("❌ Failed to ban user.")
 
 @Client.on_message(filters.command("unban") & filters.private & filters.user(ADMIN))
-async def unban_cmd(_, m: Message):
+async def unban_cmd(c: Client, m: Message):
     parts = m.text.split(maxsplit=1)
     if len(parts) < 2:
         return await m.reply("Usage: /unban user_id")
@@ -82,6 +82,13 @@ async def unban_cmd(_, m: Message):
         return await m.reply("Invalid user ID.")
     if await tb.unban_user(user_id):
         await m.reply(f"✅ **User `{user_id}` unbanned.**")
+        try:
+            await c.send_message(
+                user_id,
+                "✅ **You have been unbanned.**\n\nYou can now use the bot again."
+            )
+        except:
+            pass
     else:
         await m.reply("❌ User was not banned.")
 
