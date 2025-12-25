@@ -46,12 +46,7 @@ async def global_ban_checker(_, m: Message):
     text = "🚫 **You are banned from using this bot.**"
     if ban.get("reason"):
         text += f"\n\n**Reason:** {ban['reason']}"
-    await m.reply_text(
-        text,
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("👨‍💻 OWNER 👨‍💻", user_id=int(ADMIN))]]
-        )
-    )
+    await m.reply_text(text, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("👨‍💻 OWNER 👨‍💻", user_id=int(ADMIN))]]))
     await m.stop_propagation()
 
 @Client.on_message(filters.command("ban") & filters.private & filters.user(ADMIN))
