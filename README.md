@@ -29,6 +29,9 @@ stats - Check bot stats.
 login : login your telegram account for string session
 logout : logout your telegram account
 accept : accept all pending request form channel or group.
+ban - to ban a user.
+unban - to unban a user.
+banned - to check banned users.
 maintenance - Toggle maintenance mode
 broadcast - Broadcast Massage Send All Users In Bot.
 ```
