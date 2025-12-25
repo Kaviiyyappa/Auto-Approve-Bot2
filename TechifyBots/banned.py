@@ -85,8 +85,8 @@ async def unban_cmd(c: Client, m: Message):
     else:
         await m.reply("❌ User was not banned.")
 
-@Client.on_message(filters.command("banlist") & filters.private & filters.user(ADMIN))
-async def banlist_cmd(_, m: Message):
+@Client.on_message(filters.command("banned") & filters.private & filters.user(ADMIN))
+async def banned_cmd(_, m: Message):
     users = await tb.banned_users.find().to_list(length=None)
     if not users:
         return await m.reply("No users are currently banned.")
