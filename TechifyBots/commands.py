@@ -6,7 +6,6 @@ from config import *
 import asyncio
 from Script import text
 from .db import tb
-from .fsub import get_fsub
 
 @Client.on_message(filters.command("start"))
 async def start_cmd(client, message):
@@ -23,7 +22,6 @@ async def start_cmd(client, message):
                 bot.username
             )
         )
-    if IS_FSUB and not await get_fsub(client, message): return
     await message.reply_photo(
         photo=random.choice(PICS),
         caption=text.START.format(message.from_user.mention),
