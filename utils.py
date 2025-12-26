@@ -72,7 +72,7 @@ async def get_fsub(bot: Client, message: Message) -> bool:
 async def join_reqs(client: Client, message: ChatJoinRequest):
     await tb.add_join_req(message.from_user.id, message.chat.id)
 
-@Client.on_message(filters.command("delreq") & filters.private & filters.user(ADMIN))
+@Client.on_message(filters.command("delreq") & filters.private & filters.user(ADMIN), group=5)
 async def del_requests(client: Client, message: Message):
     await tb.del_join_req()
     await message.reply("**⚙ Successfully join request cache deleted.**")
@@ -100,7 +100,7 @@ async def global_ban_checker(_, m: Message):
     await m.reply_text(text,reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("👨‍💻 OWNER 👨‍💻",user_id=int(ADMIN))]]))
     await m.stop_propagation()
 
-@Client.on_message(filters.command("ban") & filters.private & filters.user(ADMIN))
+@Client.on_message(filters.command("ban") & filters.private & filters.user(ADMIN), group=5)
 async def ban_cmd(c: Client, m: Message):
     parts = m.text.split(maxsplit=2)
     if len(parts) < 2:
@@ -122,7 +122,7 @@ async def ban_cmd(c: Client, m: Message):
     else:
         await m.reply("❌ Failed to ban user.")
 
-@Client.on_message(filters.command("unban") & filters.private & filters.user(ADMIN))
+@Client.on_message(filters.command("unban") & filters.private & filters.user(ADMIN), group=5)
 async def unban_cmd(c: Client, m: Message):
     parts = m.text.split(maxsplit=1)
     if len(parts) < 2:
@@ -140,7 +140,7 @@ async def unban_cmd(c: Client, m: Message):
     else:
         await m.reply("❌ User was not banned.")
 
-@Client.on_message(filters.command("banned") & filters.private & filters.user(ADMIN))
+@Client.on_message(filters.command("banned") & filters.private & filters.user(ADMIN), group=5)
 async def banned_cmd(_, m: Message):
     users = await tb.banned_users.find().to_list(length=None)
     if not users:
@@ -161,7 +161,7 @@ async def maintenance_blocker(_, m: Message):
     await m.reply_text(f"<b>{m.from_user.mention},\n\nᴛʜɪꜱ ʙᴏᴛ ɪꜱ ᴄᴜʀʀᴇɴᴛʟʏ ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ.\n\n<blockquote>ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ ꜰᴏʀ ᴍᴏʀᴇ ɪɴꜰᴏ.</blockquote></b>", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("👨‍💻 ᴏᴡɴᴇʀ 👨‍💻", user_id=int(ADMIN))]]))
     await m.stop_propagation()
 
-@Client.on_message(filters.command("maintenance") & filters.user(ADMIN))
+@Client.on_message(filters.command("maintenance") & filters.user(ADMIN), group=5)
 async def maintenance_cmd(_, m: Message):
     args = m.text.split(maxsplit=1)
     if len(args) < 2:
