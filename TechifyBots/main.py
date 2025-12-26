@@ -4,7 +4,7 @@ from asyncio.exceptions import TimeoutError
 from pyrogram.types import *
 from pyrogram.errors import ApiIdInvalid, PhoneNumberInvalid, PhoneCodeInvalid, PhoneCodeExpired, SessionPasswordNeeded, PasswordHashInvalid
 from config import *
-from .db import tb
+from .database import tb
 
 SESSION_STRING_SIZE = 351
 
