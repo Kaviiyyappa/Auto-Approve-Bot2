@@ -1,4 +1,4 @@
-from pyrogram import Client, filters
+from pyrogram import Client, filters, StopPropagation
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from motor.motor_asyncio import AsyncIOMotorClient
 from config import ADMIN, DB_URI, DB_NAME
@@ -11,11 +11,7 @@ class TechifyBots:
 
     async def ban_user(self, user_id: int, reason: str = None) -> bool:
         try:
-            await self.banned_users.update_one(
-                {"user_id": user_id},
-                {"$set": {"reason": reason}},
-                upsert=True
-            )
+            await self.banned_users.update_one({"user_id": user_id}, {"$set": {"reason": reason}}, upsert=True)
             return True
         except Exception:
             return False
@@ -32,7 +28,7 @@ class TechifyBots:
 
 tb = TechifyBots()
 
-@Client.on_message(filters.private & ~filters.user(ADMIN), group=-2)
+@Client.on_message(filters.private & ~filters.user(ADMIN) & ~filters.bot & ~filters.service & ~filters.me, group=-2)
 async def global_ban_checker(_, m: Message):
     if not m.from_user:
         return
@@ -47,7 +43,7 @@ async def global_ban_checker(_, m: Message):
     if ban.get("reason"):
         text += f"\n\n**Reason:** {ban['reason']}"
     await m.reply_text(text, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("👨‍💻 OWNER 👨‍💻", user_id=int(ADMIN))]]))
-    await m.stop_propagation()
+    raise StopPropagation
 
 @Client.on_message(filters.command("ban") & filters.private & filters.user(ADMIN))
 async def ban_cmd(c: Client, m: Message):
