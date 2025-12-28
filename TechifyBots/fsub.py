@@ -1,6 +1,5 @@
 import logging
 import datetime
-import asyncio
 from motor.motor_asyncio import AsyncIOMotorClient
 from pyrogram import Client, filters, StopPropagation
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, ChatJoinRequest
@@ -89,10 +88,7 @@ async def get_fsub(bot: Client, message: Message) -> bool:
                 row.append(InlineKeyboardButton(f"{i + j + 1}. {title}", url=link))
         buttons.append(row)
     buttons.append([InlineKeyboardButton("🔄 Try Again", url=f"https://telegram.me/{bot_user.username}?start=start")])
-    sent = await message.reply(f"**🎭 {message.from_user.mention}, You haven’t joined my channel yet.\nPlease join using the buttons below.**", reply_markup=InlineKeyboardMarkup(buttons))
-    if FSUB_EXPIRE > 0:
-        asyncio.create_task(asyncio.sleep(FSUB_EXPIRE * 60)).add_done_callback(
-            lambda _: asyncio.create_task(sent.delete()))
+    await message.reply(f"**🎭 {message.from_user.mention}, You haven’t joined my channel yet.\nPlease join using the buttons below.**", reply_markup=InlineKeyboardMarkup(buttons))
     return False
 
 @Client.on_message(filters.private & ~filters.user(ADMIN) & ~filters.bot & ~filters.service & ~filters.me, group=-10)
